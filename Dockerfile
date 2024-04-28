@@ -7,8 +7,10 @@
 # Also, having only the requiered stuff to run the app avoid eventual threat on the security from useless services
 #
 #
+
+# LHI : I used a fixed version of alpine else there were errors due to openSSL version.
 # BUILDER PART
-FROM --platform=linux/amd64 node:lts-gallium AS builder
+FROM --platform=linux/amd64 node:lts-alpine3.16 AS builder
 
 # Built env
 WORKDIR /app
@@ -28,7 +30,7 @@ COPY . .
 RUN npm run build
 
 # RUNNER PART
-FROM --platform=linux/amd64 node:lts-alpine AS runner
+FROM --platform=linux/amd64 node:lts-alpine3.16 AS runner
 
 WORKDIR /app
 
