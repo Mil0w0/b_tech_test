@@ -18,5 +18,11 @@ export class EquipmentsService {
     );
   }
 
+  async updateEquipment(id: number, updateEquipmentDto: Prisma.EquipmentUpdateInput): Promise<Equipment> {
+    return this.prisma.equipment.update(
+        {where: {id: id}, data: updateEquipmentDto}
+    );
+  }
+
 
 }

@@ -3,14 +3,10 @@ import { Module } from '@nestjs/common';
 
 import { EquipmentsService } from './equipments.service';
 import { PrismaModule } from 'src/prisma/prisma.module';
-import {EquipmentsController} from "./equipments.controller";
-
-
+import { EquipmentResolver } from './equipment.resolver'
 @Module({
 
-    controllers: [EquipmentsController],
-
-    providers: [EquipmentsService],
+    providers: [EquipmentResolver, EquipmentsService],
 
     imports: [PrismaModule],
 

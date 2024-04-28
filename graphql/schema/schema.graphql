@@ -1,7 +1,8 @@
 type Project {
-    name: String
+    name: String,
 }
 
 type Query {
-    project: Project
+    project: Project,
+    equipment: Equipment
 }

@@ -6,10 +6,13 @@ import { ProjectModule } from "./project/projet.module";
 import { PrismaService } from './prisma/prisma.service';
 import {AppController} from "./app.controller";
 import {AppService} from "./app.service";
+import {EquipmentsModule} from "./equipments/equipments.module";
+import {EquipmentResolver} from "./equipments/equipment.resolver";
 
 @Module({
   imports: [
     GraphQLModule.forRoot<ApolloDriverConfig>({
+
       driver: ApolloDriver,
       debug: process.env.NODE_ENV !== 'production' ? true : false,
       playground: process.env.NODE_ENV !== 'production' ? true : false,
@@ -17,8 +20,9 @@ import {AppService} from "./app.service";
       definitions: {
         path: join(process.cwd(), 'src/graphql.ts'),
       },
+      autoSchemaFile: true,
     }),
-    ProjectModule
+      EquipmentsModule,
 ],
   controllers: [AppController],
   providers: [PrismaService, AppService],
