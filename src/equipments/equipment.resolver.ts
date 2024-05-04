@@ -9,11 +9,14 @@ export class EquipmentResolver {
   constructor(private readonly prisma: PrismaService, private readonly equipmentService: EquipmentsService) {
   }
 
+
+  //README: Créer un équipment
   @Mutation(() => Equipment)
   async createEquipment( @Args('input') data: CreateEquipmentInput): Promise<Equipment> {
     return this.equipmentService.createEquipment(data);
   }
 
+  //README: Mettre à jour un équipement
   @Mutation(() => Equipment)
   async updateEquipment(@Args('input') data: UpdateEquipmentDTO, @Args('id') id:number): Promise<Equipment> {
     return this.equipmentService.updateEquipment(id, data);
@@ -28,11 +31,7 @@ export class EquipmentResolver {
   //README: Cette query permet de récupérer un équipement en fonction de son ID
   @Query(() => Equipment, { description: 'Get an equipment by id' } )
   async Equipment(@Args('id') id: number): Promise<Equipment> {
-    return this.prisma.equipment.findUnique({
-        where: {
-            id: id
-        }
-      });
+    return this.equipmentService.getEquipmentById(id);
     }
 
 }

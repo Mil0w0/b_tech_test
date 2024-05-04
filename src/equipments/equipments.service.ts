@@ -19,5 +19,13 @@ export class EquipmentsService {
     );
   }
 
+    async getEquipmentById(id: number): Promise<Equipment> {
+        return this.prisma.equipment.findUnique({
+        where: {id: id}
+        });
+    }
 
+    async getEquipments(): Promise<Equipment[]> {
+        return this.prisma.equipment.findMany();
+    }
 }

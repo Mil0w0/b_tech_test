@@ -51,8 +51,13 @@ L’exercice consiste à créer une petite API d’équipement.
 ### Create
 
 Créer une mutation pour créer un équipement. Un équipement a un id, un nom, un manufacturer, sa consommation kwh et son cout.
-
 En base de données, il existe une relation one to many entre les manufacturer est les équipements. Un manufacturer peut donc avoir plusieurs équipements mais un équipement ne peut avoir qu’un manufacturer.
+
+`   mutation CreateManufacturer{createManufacturer(input: {name: "Hilderal & Cie"}){id, name}}
+`
+
+`    mutation CreateEquipment{createEquipment(input:{name: "Ampoule LED", kwh: 20, cout:12, manufacturerId:3}){id,name,kwh,cout}}
+`
 
 ### Update
 
@@ -65,12 +70,24 @@ Créer une mutation pour mettre à jour un équipement. La mise à jour permet d
 ### ListEquipments
 
 Cette query permet de récupérer l’ensemble des équipements présent dans la base de données.
+
 `query GetEquipments{ListEquipment{id, name}}`
 ### Equipment($id)
 
 Cette query permet de récupérer un équipement en fonction de son ID
-Query pour tester dans le playground: `query GetEquipmentByID{Equipment(id:1){id,name,kwh,cout}}`
+Query pour tester dans le playground: 
+
+`query GetEquipmentByID{Equipment(id:1){id,name,kwh,cout}}`
 
 # Pour finir
 
 Pour toutes questions vis-à-vis de ce test. Vous pouvez contacter le CTO de beeldi (guillaume@beeldi.com).
+
+
+# Remarques Loriane
+
+L'image du docker pour l'application semble être obsolète. J'ai du modifier le dockerfile et préciser une version d'alpine pour que ça fonctionne sinon j'avais des soucis de compatibilité entre prisma et openSSL ?
+Je me suis permis de changer le port hôte pour lancer l'API avec une variable modifiable dans le .env, je vous l'ai laissée à 3000 donc normalement vous ne devriez pas avoir de soucis :)
+
+
+

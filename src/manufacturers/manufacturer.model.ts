@@ -9,5 +9,4 @@ export class Manufacturer {
 
     @Field(() => String, { description: 'name of the manufacturer' })
     name: ManufacturerDB[`name`];
-
 }

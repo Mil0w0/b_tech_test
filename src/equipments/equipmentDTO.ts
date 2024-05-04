@@ -24,7 +24,4 @@ export class UpdateEquipmentDTO {
 
     @Field(() => Number, { description: 'cost of the equipment', nullable: true  })
     cout?: number;
-
-    @Field(() => Number, { description: 'manufacturer id of the equipment', nullable: true  })
-    manufacturerId?: number;
 }

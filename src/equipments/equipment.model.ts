@@ -16,5 +16,5 @@ export class Equipment {
     cout: EquipmentDB[`cout`];
 
     @Field( () => Number, { description: 'manufacturer id of the equipment' })
-    manufacturerId: number;
+    manufacturerId: EquipmentDB[`manufacturerId`];
 }
