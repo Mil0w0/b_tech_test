@@ -57,16 +57,19 @@ En base de données, il existe une relation one to many entre les manufacturer e
 ### Update
 
 Créer une mutation pour mettre à jour un équipement. La mise à jour permet de modifier le kwh, le cout et le nom de l’équipement, mais pas le manufacturer ni l’id de d’équipement.
+`mutation UpdateEquipment {updateEquipment(id: 1, input: {name: "Chaudière 2000"}){name}}
+`
 
 ## Query
 
 ### ListEquipments
 
 Cette query permet de récupérer l’ensemble des équipements présent dans la base de données.
-
+`query GetEquipments{ListEquipment{id, name}}`
 ### Equipment($id)
 
 Cette query permet de récupérer un équipement en fonction de son ID
+Query pour tester dans le playground: `query GetEquipmentByID{Equipment(id:1){id,name,kwh,cout}}`
 
 # Pour finir
 
